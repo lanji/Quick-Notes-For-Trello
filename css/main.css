@@ -396,3 +396,36 @@ nav a:hover {
         page-break-after: avoid;
     }
 }
+
+/*Sometimes you gotta do it yourself*/
+
+.loggedout {
+    font-size: 20px;
+}
+.loggedin { 
+    display: none; 
+}
+
+#header {
+    padding: 4px;
+    border-bottom: 1px solid #000;
+}
+
+#output {
+    padding: 4px;
+}
+#fullName{
+    color:#00FF5C;
+}
+.board, .card { 
+    display: block; 
+    padding: 2px;
+}
+
+a:link, a:visited, a:active{
+    color:#E4E426;
+}
+a:hover{
+    color:red;
+}
+​
