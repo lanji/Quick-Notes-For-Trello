@@ -21,23 +21,45 @@ var onAuthorize = function() {
     
         var $boards = $("<div>")
             .text("Loading boards...")
-            .appendTo("#output");
+            .appendTo("#output")
+            .after('<li id="cards">Choose a card</li>');
 
         Trello.get("members/my/boards/all", function(boards) {
             $boards.empty();
             $.each(boards, function(ix, board) {
                 if(board.closed === false){
-                    $("<a>")
-                    .attr('href','#')
+                    $("<div>")
+                    .attr('onClick','getCards("'+board.id+'")')
                     .addClass("board")
                     .text(board.name)
                     .appendTo($boards);
-                    console.log(board);
+                    console.log(board.id);
                 }
             });
         });
     });
 
+};
+
+var getCards = function(id){
+        var $lists = $("<div>")
+            .text("Loading lists...")
+            .appendTo("#output");
+
+        Trello.get("boards/"+id+"/lists", function(lists) {
+            $lists.empty();
+            $.each(lists, function(ix, list) {
+                if(list.closed === false){
+                    if(list.idBoard === id){
+                        $("<div>")
+                        .addClass("list")
+                        .text(list.name)
+                        .appendTo($lists);
+                        console.log(list.idBoard);
+                    }
+                }
+            });
+        });
 };
 
 var updateLoggedIn = function() {

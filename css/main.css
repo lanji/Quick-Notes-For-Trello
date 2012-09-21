@@ -420,6 +420,8 @@ nav a:hover {
 .board, .card { 
     display: block; 
     padding: 2px;
+    cursor: pointer;
+    color:yellow;
 }
 
 a:link, a:visited, a:active{
