@@ -1,0 +1,4 @@
+aside .loggedout{font-size:20px}aside .loggedin{display:none}#header{padding:4px;border-bottom:1px solid #000}#output{padding:4px}.fullName{color:#eeba14}
+.board,.card,.list{display:block;padding:2px;cursor:pointer;color:yellow;text-decoration:underline}.board:hover,.card:hover,.list:hover{color:red}.currentBoard,.currentList{color:#eeba14}
+a:link,a:visited,a:active{color:#e4e426}a:hover{color:red}.resetSelections{font-size:10px;padding:2px;cursor:pointer;color:yellow;text-decoration:underline}
+.resetSelections:hover{color:red}

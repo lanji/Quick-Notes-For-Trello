@@ -5,7 +5,7 @@
         </div>
 
 
-        <script src="js/main.js"></script>
+        <script src="js/main.min.js"></script>
         <script>
             var _gaq=[['_setAccount','UA-24359873-6'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

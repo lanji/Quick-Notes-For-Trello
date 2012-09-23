@@ -1,0 +1,56 @@
+$mainColor:#03004b;
+$secondColor:#E4E426;
+$linkColor:#E4E426;
+$linkHoverColor:red;
+$textAccentColor:#EEBA14;
+
+@mixin fakeLink{
+    padding: 2px;
+    cursor: pointer;
+    color:yellow;
+    text-decoration: underline;
+    &:hover{
+        color:red;
+    }
+}
+
+aside{
+    .loggedout {
+    font-size: 20px;
+    }
+    .loggedin { 
+        display: none; 
+    }
+}
+
+#header {
+    padding: 4px;
+    border-bottom: 1px solid #000;
+}
+
+#output {
+    padding: 4px;
+}
+.fullName{
+    color:$textAccentColor;
+}
+.board, .card,.list { 
+    display: block; 
+    @include fakeLink;
+}
+.currentBoard,.currentList{
+    color:$textAccentColor;
+}
+a{
+    &:link,&:visited,&:active{
+        color:$linkColor;
+    }
+    &:hover{
+        color:$linkHoverColor;        
+    }
+}
+.resetSelections{
+    font-size:10px;
+    @include fakeLink;
+
+}
