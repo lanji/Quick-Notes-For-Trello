@@ -21,7 +21,7 @@ var onAuthorize = function() {
                 $boards.empty();
                 $.each(boards, function(ix, board) {
                     if (board.closed === false) {
-                        $("<div>").attr('onClick', 'getCards($(this),"' + board.id + '");').addClass("board").addClass(board.id).text(board.name).appendTo($boards);
+                        $("<div>").attr('onClick', 'getLists($(this),"' + board.id + '");').addClass("board").addClass(board.id).text(board.name).appendTo($boards);
                         console.log(board.id);
                     }
                 });
@@ -45,7 +45,7 @@ var saveList = function(thisThang, id) {
         thisThang.removeClass("list").addClass("currentList");
         hideOthers("list");
     };
-var getCards = function(thisThang, id) {
+var getLists = function(thisThang, id) {
         //save the selection to local storage
         localStorage.setBoard = id;
 
@@ -61,12 +61,26 @@ var getCards = function(thisThang, id) {
             $.each(lists, function(ix, list) {
                 if (list.closed === false) {
                     if (list.idBoard === id) {
-                        $("<div>").addClass("list").addClass(list.id).attr('onClick', 'saveList($(this),"' + list.id + '");').text(list.name).appendTo($lists);
+                        $("<div>").addClass("list").addClass(list.id).attr('onClick', 'saveList($(this),"' + list.id + '");getCards();').text(list.name).appendTo($lists);
                         console.log(list.id);
                     }
                 }
             });
             $('.' + localStorage.setList).click();
+        });
+    };
+var getCards = function() {
+        //save the selection to local storage
+        var cardList = localStorage.setList;
+        $('.cardslist').html('');
+        Trello.get("lists/" + cardList + "/cards", function(cards) {
+            $.each(cards, function(ix, card){
+                if(card.closed === false){
+                    $("<li>").addClass('cardinlist').addClass(cards.id).text(card.name).appendTo($('.cardslist'));
+                }
+            });
+            console.log(cards);
+
         });
     };
 var resetSelections = function() {
@@ -88,17 +102,44 @@ var logout = function() {
         window.location.reload(true);
     };
 
+/* Part of this function is from Marc Drago's project https://github.com/markdrago/cardorizer */
+create_card_with_parameters = function(name, desc, listid) {
+    Trello.post("cards", {
+        name: name,
+        desc: desc,
+        idList: listid
+    });
+    show_feedback();
+};
+
+show_feedback = function(){
+    //remove entries from inputs
+    $('input[type="text"]').each(function(){
+        $(this).val('');
+    });
+    //add card to the list
+    getCards();
+
+};
+
 Trello.authorize({
     interactive: false,
+    scope: { read: true, write: true },
     success: onAuthorize
 });
 
 $("#connectLink").click(function() {
     Trello.authorize({
         type: "popup",
+        scope: { read: true, write: true },
         success: onAuthorize,
         name: 'Quick-Notes-for-Trello'
     });
 });
 $('.resetSelections').on('click', resetSelections);
 $("#disconnect").click(logout);
+$('#submitcard').click(function(){
+    create_card_with_parameters($('#cardtitle').val(),$('#carddescription').val(),localStorage.setList);
+});
+
+

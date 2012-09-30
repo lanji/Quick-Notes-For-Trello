@@ -4,16 +4,42 @@ include 'header.php'; ?>
             <div class="main wrapper clearfix">
 
                 <article>
-                    <form action="#" id="main-form" method="post">
-                        <textarea placeholder="Enter your new card title here!" cols="60" rows="8"></textarea><br/>
-                        <input type="submit" name="submit" value="Submit"> 
-                    </form>
+
+                    <table>
+                        <tr>
+                            <td>
+                        <label for="cardtitle">Title of Card: </label>
+                            </td>
+                            <td>
+                        <input type="text" placeholder="Enter your card title here" name="cardtitle" id="cardtitle"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>    
+                        <label for="carddescription">Description of Card: </label>
+                            </td>
+                            <td>
+                        <input type="text" placeholder="Enter your description here" name="carddescription" id="carddescription"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <p href="#" id="seemore">See More</p>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                        
+                        <input type="button" name="submitcard" value="Submit Card" id="submitcard"> 
+
                     <div class="postdisplayoptions">
-                        <input type="radio" name="display" value="This Session" checked> Cards from this session &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" name="display" value="All On List"> All Cards on the list
+                        All Cards in the List:
                     </div>
                     <div class="resentposts">
-                        <li class="post">This is an example of a resently created card</li>
+                        <ul class="cardslist">
+                            
+                        </ul>
                     </div>
                 </article>
 
