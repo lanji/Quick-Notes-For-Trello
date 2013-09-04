@@ -1,5 +1,11 @@
 <?php
-include 'header.php'; ?>
+
+// Define your APP_KEY
+define('APP_KEY', "YourAppKeyPerTrello");
+
+
+include 'header.php'; 
+?>
         <div class="main-container">
             <div class="main wrapper clearfix">
 
@@ -64,6 +70,6 @@ include 'header.php'; ?>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
-<?
+<?php
 include 'footer.php';
 ?>
