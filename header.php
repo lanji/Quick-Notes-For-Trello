@@ -16,7 +16,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
         <!-- trello api -->
-        <script src="https://api.trello.com/1/client.js?key=4b077d4fa0c75e9c9e0260707b706ee5"></script>
+        <script src="https://api.trello.com/1/client.js?key=<?php echo APP_KEY; ?>"></script>
         <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     </head>
     <body>
